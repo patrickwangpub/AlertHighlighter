@@ -1,3 +1,9 @@
+/* Colours a row green when its alert ID is on the bulk-close list.
+ *
+ * Matching is an exact whole-value match: the element's attribute (or text)
+ * must equal a list entry once whitespace is stripped and case is folded.
+ * There is no substring matching, so A1234 can never highlight A12345.
+ */
 (() => {
   'use strict';
   if (window.__alertgreenLoaded) return;
@@ -6,7 +12,6 @@
   const HIT = 'alertgreen-hit';
   const rule = AG_CONFIG.rule;
   let idSet = new Set();
-  let stats = { rows: 0, hits: 0 };
   let queued = false;
 
   const norm = (v) => {
@@ -17,12 +22,10 @@
   };
 
   function scan() {
-    stats = { rows: 0, hits: 0 };
     let els;
     try { els = document.querySelectorAll(rule.matchSelector); } catch (e) { return; }
 
     for (const el of els) {
-      stats.rows++;
       const id = norm(rule.mode === 'attr' ? el.getAttribute(rule.attr) : el.textContent);
 
       let target = el;
@@ -30,12 +33,8 @@
         target = target.parentElement;
       }
 
-      if (id && idSet.has(id)) {
-        stats.hits++;
-        target.classList.add(HIT);
-      } else {
-        target.classList.remove(HIT);
-      }
+      if (id && idSet.has(id)) target.classList.add(HIT);
+      else target.classList.remove(HIT);
     }
   }
 
@@ -48,24 +47,16 @@
     setTimeout(run, 250);
   }
 
-  function load() {
-    chrome.runtime.sendMessage({ type: 'getIds' }, (data) => {
-      void chrome.runtime.lastError;
-      idSet = new Set((data && data.ids ? data.ids : []).map(norm).filter(Boolean));
-      scan();
-    });
-  }
-
-  chrome.runtime.onMessage.addListener((msg, sender, reply) => {
-    if (msg.type === 'stats') reply({ rows: stats.rows, hits: stats.hits, listSize: idSet.size });
-    else if (msg.type === 'reload') { load(); reply({ ok: true }); }
-    return true;
-  });
-
   // Grids redraw as the user filters, sorts and scrolls, so re-scan on change.
   new MutationObserver(queueScan).observe(document.documentElement, {
     childList: true, subtree: true, characterData: true
   });
 
-  load();
+  // Read once per page load, straight from the file on disk. Replacing the
+  // file and hitting F5 is what puts a new list into effect.
+  chrome.runtime.sendMessage({ type: 'getIds' }, (data) => {
+    void chrome.runtime.lastError;
+    idSet = new Set((data && data.ids ? data.ids : []).map(norm).filter(Boolean));
+    scan();
+  });
 })();

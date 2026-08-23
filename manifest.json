@@ -24,9 +24,5 @@
       "run_at": "document_idle",
       "all_frames": true
     }
-  ],
-  "action": {
-    "default_popup": "popup.html",
-    "default_title": "Alert Bulk-Close Highlighter"
-  }
+  ]
 }
