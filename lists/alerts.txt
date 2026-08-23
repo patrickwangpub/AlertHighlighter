@@ -1,5 +1,8 @@
 # Bulk-close alert list.
 # One ID per line, or comma separated, or both. Lines starting with # are ignored.
+#
+# To update: replace this whole file, then reload the workflow page (F5).
+#
 # Replace the examples below with the real list before shipping.
 A1234
 A1235, A1236

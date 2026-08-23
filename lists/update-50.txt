@@ -1,5 +1,0 @@
-# Bulk-close alert list.
-# This file is in the initial build as a reminder on the naming convention
-# And that this is currently configured for up to 50 updates - can be changed in config.js
-A1234
-A1235, A1236
