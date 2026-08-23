@@ -1,0 +1,5 @@
+# Bulk-close alert list.
+# One ID per line, or comma separated, or both. Lines starting with # are ignored.
+# Replace the examples below with the real list before shipping.
+A1234
+A1235, A1236
