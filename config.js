@@ -1,14 +1,9 @@
-/* The only file you normally edit. */
 const AG_CONFIG = {
-
-  rule: {
-    mode: 'attr',                 // 'attr' = read an HTML attribute, 'text' = read the element's text
-    matchSelector: 'div[title]',  // which elements hold an alert ID
-    attr: 'title',                // which attribute (ignored when mode is 'text')
-    highlightUp: 0                // 0 = colour that element; 1 = colour its parent, etc.
-  },
-
+  siteLabel: 'the workflow system',
+  listFolder: '\\\\CHANGE-ME-fileserver\\share\\bulk-close',
+  autoRefreshHours: 8,
+  rule: null,
   caseSensitive: false,
-
-  listFile: 'lists/alerts.txt'
+  simpleMode: true
 };
+if (typeof module !== 'undefined') module.exports = { AG_CONFIG };
