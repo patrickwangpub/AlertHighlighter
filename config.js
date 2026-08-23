@@ -1,9 +1,14 @@
+/* The only file you normally edit. */
 const AG_CONFIG = {
-  siteLabel: 'the workflow system',
-  listFolder: '\\\\CHANGE-ME-fileserver\\share\\bulk-close',
-  autoRefreshHours: 8,
-  rule: null,
+  rule: {
+    mode: 'attr',                 // 'attr' = read an HTML attribute, 'text' = read the element's text
+    matchSelector: 'div[title]',  // which elements hold an alert ID
+    attr: 'title',                // which attribute (ignored when mode is 'text')
+    highlightUp: 0                // 0 = colour that element; 1 = colour its parent, etc.
+  },
   caseSensitive: false,
-  simpleMode: true
+  baseList: 'lists/alerts.txt',
+  updatePrefix: 'lists/update-',
+  updateSuffix: '.txt',
+  maxUpdates: 50
 };
-if (typeof module !== 'undefined') module.exports = { AG_CONFIG };

@@ -1,20 +1,18 @@
 {
   "manifest_version": 3,
   "name": "Alert Bulk-Close Highlighter",
-  "version": "1.0.0",
-  "description": "Colors alerts green when their alert_id is on the bulk-close list. Everything stays local; the extension makes no network requests.",
-  "permissions": [
-    "storage",
-    "unlimitedStorage"
-  ],
+  "version": "2.0.0",
+  "description": "Colours an alert green when its ID is on the bulk-close list. Reads text files bundled inside the extension. No storage, no network access.",
   "host_permissions": [
-    "https://en.wikipedia.org/wiki/Demographics_of_Singapore/*",
-    "file:///*"
+    "https://CHANGE-ME.your-company.internal/*"
   ],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
       "matches": [
-        "https://en.wikipedia.org/wiki/Demographics_of_Singapore/*"
+        "https://CHANGE-ME.your-company.internal/*"
       ],
       "js": [
         "config.js",
@@ -30,9 +28,5 @@
   "action": {
     "default_popup": "popup.html",
     "default_title": "Alert Bulk-Close Highlighter"
-  },
-  "options_ui": {
-    "page": "options.html",
-    "open_in_tab": true
   }
 }
