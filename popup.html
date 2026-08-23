@@ -4,53 +4,25 @@
 <meta charset="utf-8">
 <style>
   html { background: #fff; color-scheme: light; }
-  body { width: 300px; margin: 0; padding: 16px;
-         font: 13px/1.5 "Segoe UI", system-ui, sans-serif; color: #202124;
-         background: #fff; color-scheme: light; }
+  body { width: 260px; margin: 0; padding: 16px; background: #fff; color: #202124;
+         font: 13px/1.5 "Segoe UI", system-ui, sans-serif; }
   .count { font-size: 28px; font-weight: 600; line-height: 1.1; }
-  .count-label { color: #5f6368; margin-bottom: 14px; }
-  .row { display: flex; align-items: baseline; gap: 8px; margin: 3px 0; }
-  .row .n { font-weight: 600; min-width: 36px; text-align: right; }
-  .green { color: #1e8e3e; }
+  .label { color: #5f6368; margin-bottom: 14px; }
+  .green { color: #1e8e3e; font-weight: 600; }
   .muted { color: #5f6368; font-size: 11.5px; }
-  .warn { color: #c5221f; }
   button { font: inherit; width: 100%; padding: 9px 12px; margin-top: 12px;
            border: 1px solid #1e8e3e; background: #1e8e3e; color: #fff;
            border-radius: 6px; cursor: pointer; }
   button:hover { background: #197a35; }
-  button.sub { background: #f8f9fa; color: #202124; border-color: #dadce0;
-               padding: 5px 10px; margin-top: 6px; }
-  button.sub:hover { background: #e8f0fe; }
   button:disabled { opacity: .6; cursor: default; }
-  hr { border: none; border-top: 1px solid #e8eaed; margin: 14px 0 8px; }
-  a { color: #1a73e8; cursor: pointer; text-decoration: none; font-size: 11.5px; }
-  code { background: #f1f3f4; padding: 1px 4px; border-radius: 3px; font-size: 11px;
-         word-break: break-all; }
-  #advanced { display: none; }
 </style>
 </head>
 <body>
   <div class="count" id="count">&mdash;</div>
-  <div class="count-label">alerts on the bulk-close list</div>
-
-  <div id="page"></div>
-
-  <button id="refresh">Refresh list</button>
-  <div class="muted" id="synced" style="margin-top:6px"></div>
-  <div class="muted warn" id="err"></div>
-
-  <hr>
-  <a id="advToggle">Advanced&hellip;</a>
-  <div id="advanced">
-    <div class="muted" style="margin-top:8px" id="cfg"></div>
-    <button class="sub" id="toggle">&hellip;</button>
-    <button class="sub" id="panel">Open setup panel on page</button>
-    <button class="sub" id="options">List settings&hellip;</button>
-  </div>
-
-  <script src="config.js"></script>
-  <script src="idlist.js"></script>
-  <script src="lists.js"></script>
+  <div class="label">alerts on the bulk-close list</div>
+  <div id="page" class="muted"></div>
+  <button id="refresh">Refresh</button>
+  <div class="muted" id="msg" style="margin-top:8px"></div>
   <script src="popup.js"></script>
 </body>
 </html>

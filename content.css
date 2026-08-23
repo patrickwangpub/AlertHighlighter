@@ -2,20 +2,10 @@
   background-color: #c9f7c5 !important;
   box-shadow: inset 4px 0 0 0 #1e8e3e !important;
 }
+/* Table cells paint their own background over the row's, so override them. */
 .alertgreen-hit > td,
 .alertgreen-hit > th,
 .alertgreen-hit > [role="gridcell"],
 .alertgreen-hit > [role="cell"] {
   background-color: #c9f7c5 !important;
-}
-
-.alertgreen-pickhover {
-  outline: 2px dashed #d93025 !important;
-  outline-offset: -2px !important;
-  cursor: crosshair !important;
-}
-
-.alertgreen-preview {
-  background-color: #fff3c4 !important;
-  box-shadow: inset 4px 0 0 0 #f9ab00 !important;
 }
