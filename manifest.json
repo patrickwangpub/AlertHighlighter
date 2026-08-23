@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Alert Bulk-Close Highlighter",
+  "version": "1.0.0",
+  "description": "Colors alerts green when their alert_id is on the bulk-close list. Everything stays local; the extension makes no network requests.",
+  "permissions": [
+    "storage",
+    "unlimitedStorage"
+  ],
+  "host_permissions": [
+    "https://en.wikipedia.org/wiki/Demographics_of_Singapore/*",
+    "file:///*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://en.wikipedia.org/wiki/Demographics_of_Singapore/*"
+      ],
+      "js": [
+        "config.js",
+        "content.js"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": true
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Alert Bulk-Close Highlighter"
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  }
+}

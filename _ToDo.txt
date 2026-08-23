@@ -1,0 +1,19 @@
+config.js  
+/* -- 3. The highlight rule ----------------------------------------------
+   * Work this out once on the real system: open the workflow page, press
+   * Alt+Shift+G, click "Pick an alert ID", choose the rule, then click
+   * "Copy rule for config.js" and paste the result over the block below.
+   * Set to null to make the extension ask the first user to configure it.  */
+
+  /* e.g.
+  rule: {
+    mode: 'attr',                     // 'attr' (an HTML attribute) or 'text'
+    matchSelector: 'tr[data-alert-id]',
+    attr: 'data-alert-id',
+    highlightUp: 0                    // ancestors up from the match to colour
+  },
+  */
+
+
+manifest.json
+Edit this: https://en.wikipedia.org/wiki/Demographics_of_Singapore/
